@@ -1,20 +1,38 @@
 <h1>todo-component works!</h1>
 <div class="banner"></div>
 <span>
-  <ul *ngFor="let item of todoList">
-    <li class="text" [ngClass]="{ completed: item.completed }">
-      <input
-        type="checkbox"
-        [(ngModel)]="item.completed"
-        (change)="taskCompleted(item)"
-      />
-      <span [ngClass]="{ 'completed-text': item.completed }"
-        >{{ item.listItem }} {{ item.createdAt }}</span
-      >
+  <ul class="todo-list">
+    <li
+      class="todo-item"
+      [ngClass]="{ completed: item.completed }"
+      *ngFor="let item of todoList"
+    >
+      <label class="checkbox-container">
+        <input
+          type="checkbox"
+          [(ngModel)]="item.completed"
+          (change)="taskCompleted(item)"
+        />
+        <span class="checkmark"></span>
+      </label>
+      <span class="task-text" [ngClass]="{ 'completed-text': item.completed }">
+        {{ item.listItem }} {{ item.createdAt }}
+      </span>
     </li>
   </ul>
 </span>
-<input type="text" [(ngModel)]="todoText" placeholder="enter the task" />
-<button mat-fab color="warn" type="submit" (click)="getData(todoText)">
-  add
+<input
+  class="task-input"
+  type="text"
+  [(ngModel)]="todoText"
+  placeholder="Enter the task"
+/>
+<button
+  class="add-button"
+  mat-fab
+  color="warn"
+  type="submit"
+  (click)="getData(todoText)"
+>
+  Add
 </button>
