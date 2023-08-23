@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component'; // Update the path as needed
+import { MatDialog } from '@angular/material/dialog';
 
-interface todoType {
+export interface todoType {
   completed: boolean;
   listItem: string;
   createdAt: string;
   place: string;
+  icon: any;
 }
 
 @Component({
@@ -17,23 +20,26 @@ export class TodoComponent {
   todoList: todoType[] = [];
   todoText = '';
 
+  constructor(private dialog: MatDialog) {} // Inject the MatDialog service here
+
+  openAddTodoDialog(): void {
+    this.getData(this.todoText);
+  }
+
   getData(val: string): void {
-    console.log(val);
-    this.todoList.push({
-      listItem: val,
-      completed: false,
-      place: '',
-      createdAt: new Date().toLocaleTimeString('en-US'),
+    const dialogRef = this.dialog.open(AddTodoDialogComponent, {
+      width: '400px', // Adjust as needed
+      data: { listItem: val, completed: false, createdAt: new Date().toLocaleTimeString('en-US'), place: '', icon: '' },
     });
 
-    this.todoText = ''; // Clear the input field
-    console.log(this.todoList);
+    dialogRef.afterClosed().subscribe((result: todoType) => {
+      if (result) {
+        this.todoList.push(result);
+      }
+    });
   }
 
   taskCompleted(item: todoType) {
-    // No need to pass the event object; directly update the completed property
     item.completed = !item.completed;
   }
-  
-  
 }

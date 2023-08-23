@@ -1,0 +1,12 @@
+<p>add-todo-dialog works!</p>
+<h2 mat-dialog-title>Add Todo</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Todo Item" [(ngModel)]="todoItem.listItem" />
+  </mat-form-field>
+  <!-- Add more fields here as needed -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onAddTodoClick()">Add Todo</button>
+</mat-dialog-actions>

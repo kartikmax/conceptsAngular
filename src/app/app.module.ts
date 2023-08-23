@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog'; // Add this import
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field'
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-// import { TodoComponentComponent } from './todo/todo.component';
-import { FormsModule } from '@angular/forms';
+import { AddTodoDialogComponent } from './add-todo-dialog/add-todo-dialog.component'; // Adjust the path accordingly
+
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    AddTodoDialogComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule, // Add MatDialogModule to your imports
+    MatFormFieldModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
