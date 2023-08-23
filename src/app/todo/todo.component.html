@@ -1,0 +1,13 @@
+<h1>todo-component works!</h1>
+<div class="banner"></div>
+<span>
+  <ul *ngFor="let item of todoList">
+    <li class="text">
+      {{ item.listItem }} {{ item.createdAt }} <input type="checkbox" #tick />
+    </li>
+  </ul>
+</span>
+<input type="text" [(ngModel)]="todoText" placeholder="enter the task" />
+<button mat-fab color="warn" type="submit" (click)="getData(todoText)">
+  add
+</button>
