@@ -2,8 +2,15 @@
 <div class="banner"></div>
 <span>
   <ul *ngFor="let item of todoList">
-    <li class="text">
-      {{ item.listItem }} {{ item.createdAt }} <input type="checkbox" #tick />
+    <li class="text" [ngClass]="{ completed: item.completed }">
+      <input
+        type="checkbox"
+        [(ngModel)]="item.completed"
+        (change)="taskCompleted(item)"
+      />
+      <span [ngClass]="{ 'completed-text': item.completed }"
+        >{{ item.listItem }} {{ item.createdAt }}</span
+      >
     </li>
   </ul>
 </span>

@@ -30,7 +30,10 @@ export class TodoComponent {
     console.log(this.todoList);
   }
 
-  taskCompleted(val: boolean, e: any) {
-    console.log(e);
+  taskCompleted(item: todoType) {
+    // No need to pass the event object; directly update the completed property
+    item.completed = !item.completed;
   }
+  
+  
 }
