@@ -1,13 +1,11 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA ,MatDialogContent} from '@angular/material/dialog';
-import { TodoComponent } from '../todo/todo.component';
-// import { todoType } from '../todo.component'; // Update the path as needed
-import {todoType} from "../todo/todo.component"
-
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { todoType } from '../todo/todo.component';
 
 @Component({
   selector: 'app-add-todo-dialog',
   templateUrl: './add-todo-dialog.component.html',
+  styleUrls: ['./add-todo-dialog.component.css'],
 })
 export class AddTodoDialogComponent {
   constructor(

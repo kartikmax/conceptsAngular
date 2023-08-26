@@ -5,19 +5,20 @@
 }
 
 .todo-item {
-  display: flex;
+  display: grid; /* Use grid layout */
+  grid-template-columns: 30px auto 50px; /* Adjust column sizes as needed */
   align-items: center;
   margin: 10px 0;
+  padding: 10px; /* Add padding to each item */
+  border: 1px solid #ccc; /* Add a subtle border for separation */
+  border-radius: 5px;
 }
 
-/* Style for the checkbox */
+/* Style the custom checkbox appearance */
 .checkbox-container {
-  display: inline-block;
   position: relative;
-  margin-right: 50px; /* Increased spacing */
   cursor: pointer;
   user-select: none;
-  padding: 10px;
 }
 
 .checkbox-container input {
@@ -47,14 +48,8 @@
   transform: rotate(45deg);
 }
 
-/* Style the custom checkbox appearance */
-.checkbox-container input:checked + .checkmark::after {
-  display: block;
-}
-
 /* Style for the task text */
 .task-text {
-  flex: 1;
   font-size: 18px;
   transition: color 0.3s;
 }
@@ -66,17 +61,16 @@
 
 /* Style for the input textbox */
 .task-input {
-  width: 60%;
+  width: 100%; /* Expand input to full width of container */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 10px 10px 0 0;
+  margin-bottom: 10px;
 }
 
 /* Style for the "Add" button */
 .add-button {
-  margin-top: 10px;
   background-color: #ff6f61;
   color: white;
   border: none;

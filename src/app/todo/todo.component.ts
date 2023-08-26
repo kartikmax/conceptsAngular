@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component'; // Update the path as needed
+import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 export interface todoType {
   completed: boolean;
-  listItem: string;
   createdAt: string;
-  place: string;
   icon: any;
+  listItem: string;
+  place: string;
 }
 
 @Component({
@@ -20,7 +20,12 @@ export class TodoComponent {
   todoList: todoType[] = [];
   todoText = '';
 
-  constructor(private dialog: MatDialog) {} // Inject the MatDialog service here
+  constructor(private dialog: MatDialog) {
+    const storedList = localStorage.getItem('todoList');
+    if (storedList) {
+      this.todoList = JSON.parse(storedList);
+    }
+  }
 
   openAddTodoDialog(): void {
     this.getData(this.todoText);
@@ -28,18 +33,31 @@ export class TodoComponent {
 
   getData(val: string): void {
     const dialogRef = this.dialog.open(AddTodoDialogComponent, {
-      width: '400px', // Adjust as needed
-      data: { listItem: val, completed: false, createdAt: new Date().toLocaleTimeString('en-US'), place: '', icon: '' },
+      width: '400px',
+      data: {
+        completed: false,
+        createdAt: new Date().toLocaleTimeString('en-US'),
+        icon: '',
+        listItem: val,
+        place: '',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result: todoType) => {
       if (result) {
         this.todoList.push(result);
+        this.saveTodoListToLocalStorage();
       }
     });
   }
 
   taskCompleted(item: todoType) {
     item.completed = !item.completed;
+    this.saveTodoListToLocalStorage();
+    console.log(item)
+  }
+
+  private saveTodoListToLocalStorage() {
+    localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
 }

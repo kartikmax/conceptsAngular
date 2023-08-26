@@ -7,3 +7,12 @@
 >
   Add
 </button>
+
+<ul>
+  <li *ngFor="let item of todoList">
+    <span [class.completed]="item.completed">{{ item.listItem }}</span>
+    <button mat-icon-button (click)="taskCompleted(item)">
+      <mat-icon>{{ item.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+    </button>
+  </li>
+</ul>
