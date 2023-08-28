@@ -54,10 +54,10 @@
   transition: color 0.3s;
 }
 
-.completed-text {
+/* .completed-text {
   text-decoration: line-through;
   color: gray;
-}
+} */
 
 /* Style for the input textbox */
 .task-input {
@@ -84,4 +84,38 @@
 .add-button:hover {
   background-color: #f45446;
   transform: scale(1.05);
+}
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  margin: 10px;
+}
+.child {
+  height: auto;
+  width: 80vw;
+}
+
+.c2 {
+  background-color: antiquewhite;
+}
+.c1 {
+  background-color: bisque;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  font-size: 35px;
+}
+
+.completed-text,
+.incompleted-text {
+  display: block;
+  padding: 20px;
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
